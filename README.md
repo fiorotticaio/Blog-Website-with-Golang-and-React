@@ -14,7 +14,7 @@ This project is a simple blog website built with Golang (Fiber framework) and Re
 
 ## Project setup
 
-### Prerequisites
+### Requirements
 
 Make sure you have Go installed on your system. You can download it from [here](https://golang.org/dl/).
 
