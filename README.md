@@ -3,6 +3,8 @@
 This project is a simple blog website built with Golang (Fiber framework) and React.
 
 
+## Getting Started
+
 ## Create a mysql database
 
 - Use app xampp to create a mysql database and start the server
@@ -10,7 +12,7 @@ This project is a simple blog website built with Golang (Fiber framework) and Re
 - Create a new database named `goblog`
 
 
-## Getting Started
+## Project setup
 
 ### Prerequisites
 
