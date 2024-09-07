@@ -5,7 +5,7 @@ This project is a simple blog website built with Golang (Fiber framework) and Re
 
 ## Getting Started
 
-## Create a mysql database
+### Create a mysql database
 
 - Use app xampp to create a mysql database and start the server
 - Access the database in your browser by going to `http://localhost/phpmyadmin`
