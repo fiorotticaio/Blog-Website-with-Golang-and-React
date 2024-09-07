@@ -22,5 +22,6 @@ func Connect() {
 	if err != nil {
 		panic("Could not connect to the database")
 	}
-	DB = database
+
+	DB = database // Set the global DB variable to the database connection
 }

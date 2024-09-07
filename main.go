@@ -10,11 +10,13 @@ import (
 ) 
 
 func main() {
-	database.Connect()
+	database.Connect() // Connect to the database
+
 	err := godotenv.Load() // Load .env file
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
+
 	port := os.Getenv("PORT") // Get PORT from .env file
 	app := fiber.New() // Create a new Fiber app
 	app.Listen(":" + port) // Listen on the specified port
