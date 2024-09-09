@@ -4,10 +4,10 @@ import (
 	"log"
 	"os"
 
+	"github.com/fiorotticaio/Blog-Website-with-Golang-and-React/database"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
-	"github.com/fiorotticaio/Blog-Website-with-Golang-and-React/database"
-) 
+)
 
 func main() {
 	database.Connect() // Connect to the database
@@ -18,8 +18,8 @@ func main() {
 	}
 
 	port := os.Getenv("PORT") // Get PORT from .env file
-	app := fiber.New() // Create a new Fiber app
-	app.Listen(":" + port) // Listen on the specified port
+	app := fiber.New()        // Create a new Fiber app
+	app.Listen(":" + port)    // Listen on the specified port
 
-	app.Shutdown() // Shutdown the Fiber app
+	// app.Shutdown() // Shutdown the Fiber app
 }
