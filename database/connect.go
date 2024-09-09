@@ -21,6 +21,8 @@ func Connect() {
 	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{}) // Connect to MySQL
 	if err != nil {
 		panic("Could not connect to the database")
+	} else {
+		log.Println("Connected successfully to the database")
 	}
 
 	DB = database // Set the global DB variable to the database connection

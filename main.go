@@ -20,4 +20,6 @@ func main() {
 	port := os.Getenv("PORT") // Get PORT from .env file
 	app := fiber.New() // Create a new Fiber app
 	app.Listen(":" + port) // Listen on the specified port
+
+	app.Shutdown() // Shutdown the Fiber app
 }
