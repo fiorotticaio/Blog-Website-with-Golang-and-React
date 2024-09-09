@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/fiorotticaio/Blog-Website-with-Golang-and-React/database"
+	"github.com/fiorotticaio/Blog-Website-with-Golang-and-React/routes"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 )
@@ -19,7 +20,6 @@ func main() {
 
 	port := os.Getenv("PORT") // Get PORT from .env file
 	app := fiber.New()        // Create a new Fiber app
+	routes.Setup(app)         // Setup the routes
 	app.Listen(":" + port)    // Listen on the specified port
-
-	// app.Shutdown() // Shutdown the Fiber app
 }
