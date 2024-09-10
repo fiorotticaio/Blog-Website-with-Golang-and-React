@@ -18,7 +18,7 @@ func Connect() {
 		log.Fatal("Error loading .env file")
 	}
 
-	dsn := os.Getenv("DSN")                                     // Get DSN from .env file
+	dsn := os.Getenv("DB")                                      // Get DSN from .env file
 	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{}) // Connect to MySQL
 	if err != nil {
 		panic("Could not connect to the database")
