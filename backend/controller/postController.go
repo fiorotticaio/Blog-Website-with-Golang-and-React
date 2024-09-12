@@ -14,11 +14,11 @@ import (
 )
 
 func CreatePost(c *fiber.Ctx) error {
-	var blogpost models.Blog
-	if err := c.BodyParser(&blogpost); err != nil {
+	var post models.Post
+	if err := c.BodyParser(&post); err != nil {
 		fmt.Println("Unable to parse body")
 	}
-	if err := database.DB.Create(&blogpost).Error; err != nil {
+	if err := database.DB.Create(&post).Error; err != nil {
 		c.Status(400)
 		return c.JSON(fiber.Map{
 			"message": "Invalid payload",
@@ -34,11 +34,11 @@ func AllPost(c *fiber.Ctx) error {
 	limit := 5
 	offset := (page - 1) * limit
 	var total int64
-	var getblog []models.Blog
-	database.DB.Preload("User").Offset(offset).Limit(limit).Find(&getblog)
-	database.DB.Model(&models.Blog{}).Count(&total)
+	var post []models.Post
+	database.DB.Preload("User").Offset(offset).Limit(limit).Find(&post)
+	database.DB.Model(&models.Post{}).Count(&total)
 	return c.JSON(fiber.Map{
-		"data": getblog,
+		"data": post,
 		"meta": fiber.Map{
 			"total":     total,
 			"page":      page,
@@ -49,26 +49,36 @@ func AllPost(c *fiber.Ctx) error {
 
 func DetailPost(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
-	var blogpost models.Blog
-	database.DB.Where("id=?", id).Preload("User").First(&blogpost)
+	var post models.Post
+	database.DB.Where("id=?", id).Preload("User").First(&post)
 	return c.JSON(fiber.Map{
-		"data": blogpost,
+		"data": post,
 	})
 
 }
 
 func UpdatePost(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
-	blog := models.Blog{
+
+	post := models.Post{
 		Id: uint(id),
 	}
 
-	if err := c.BodyParser(&blog); err != nil {
+	if err := database.DB.First(&post, id).Error; err != nil {
+		c.Status(404)
+		return c.JSON(fiber.Map{
+			"message": "Opps!, record Not found",
+		})
+	}
+
+	if err := c.BodyParser(&post); err != nil {
 		fmt.Println("Unable to parse body")
 	}
-	database.DB.Model(&blog).Updates(blog)
+
+	database.DB.Model(&post).Updates(post)
+
 	return c.JSON(fiber.Map{
-		"message": "post updated successfully",
+		"message": post,
 	})
 
 }
@@ -76,18 +86,18 @@ func UpdatePost(c *fiber.Ctx) error {
 func UniquePost(c *fiber.Ctx) error {
 	cookie := c.Cookies("jwt")
 	id, _ := util.Parsejwt(cookie)
-	var blog []models.Blog
-	database.DB.Model(&blog).Where("user_id=?", id).Preload("User").Find(&blog)
+	var post []models.Post
+	database.DB.Model(&post).Where("user_id=?", id).Preload("User").Find(&post)
 
-	return c.JSON(blog)
+	return c.JSON(post)
 
 }
 func DeletePost(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
-	blog := models.Blog{
+	post := models.Post{
 		Id: uint(id),
 	}
-	deleteQuery := database.DB.Delete(&blog)
+	deleteQuery := database.DB.Delete(&post)
 	if errors.Is(deleteQuery.Error, gorm.ErrRecordNotFound) {
 		c.Status(400)
 		return c.JSON(fiber.Map{

@@ -31,6 +31,6 @@ func Connect() {
 	// Migrate the models (tables) to the database
 	database.AutoMigrate(
 		&models.User{},
-		&models.Blog{},
+		&models.Post{},
 	)
 }

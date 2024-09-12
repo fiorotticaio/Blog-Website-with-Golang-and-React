@@ -1,6 +1,5 @@
 # Blog Website - Golang API
 
-
 ## Getting Started
 
 ### Create a mysql database
@@ -40,8 +39,14 @@ PORT="3000"
 
 ### Run the application
 
+In production (where the changes on the backend files wont trigger a new restart on server) just run:
 ```bash
 go run main.go
+```
+
+For development, run:
+```bash
+air
 ```
 
 The application will be available at `http://localhost:3000`.

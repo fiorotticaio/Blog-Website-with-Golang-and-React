@@ -1,12 +1,12 @@
 import React from "react";
-import Register from "./components/register";
+import Register from "./components/Register";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";
-import CreateBlog from "./components/CreateBlog";
+import CreatePost from "./components/CreatePost";
 import Navbar from "./components/Navbar";
-import BlogDetail from "./components/BlogDetails";
-import PersonalBlog from "./components/PersonalBlog";
+import PostDetail from "./components/PostDetails";
+import PersonalPost from "./components/PersonalPost";
 import EditPost from "./components/EditPost";
 function App() {
   return (
@@ -16,9 +16,9 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/create" element={<CreateBlog />} />
-          <Route exact path="/detail/:id" element={<BlogDetail />} />
-          <Route exact path="/personal" element={<PersonalBlog />} />
+          <Route exact path="/create" element={<CreatePost />} />
+          <Route exact path="/detail/:id" element={<PostDetail />} />
+          <Route exact path="/personal" element={<PersonalPost />} />
           <Route exact path="/edit/:id" element={<EditPost />} />
         </Routes>
     </div>
