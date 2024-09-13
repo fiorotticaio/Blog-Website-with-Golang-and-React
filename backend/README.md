@@ -37,6 +37,10 @@ DB="your-database-connection-string"
 PORT="3000"
 ```
 
+### Create upload folder
+
+Create an empty folder in the project root named '<strong>uploads</strong>'
+
 ### Run the application
 
 In production (where the changes on the backend files wont trigger a new restart on server) just run:
