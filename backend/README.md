@@ -37,7 +37,7 @@ DB="your-database-connection-string"
 PORT="3000"
 ```
 
-### Create upload folder
+### Create uploads folder
 
 Create an empty folder in the project root named '<strong>uploads</strong>'
 
