@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-const BlogDetail = () => {
+
+const PostDetail = () => {
 	const navigate = useNavigate();
 	const [post, setPost] = useState();
 	const { id } = useParams();
-	
-	useEffect(() => {
-		const User = localStorage.getItem("user");
-
-		if (!User) {
-			navigate("/login");
-		}
-	}, []);
 
 	const fetchPost = () => {
 		axios.get( `${process.env.REACT_APP_BACKEND_URL}/api/post/${id}`, {withCredentials: true})
@@ -24,10 +17,18 @@ const BlogDetail = () => {
 			})
 	};
 
+	
 	useEffect(() => {
+		const User = localStorage.getItem("user");
+
+		if (!User) {
+			navigate("/login");
+		}
+
 		fetchPost();
 	}, []);
 
+	
 	return (
 		<div className="relative">
 			<div className="max-w-3xl mb-10 rounded overflow-hidden flex flex-col mx-auto text-center">
@@ -46,7 +47,7 @@ const BlogDetail = () => {
 				<hr />
 			</div>
 
-			<div className="mx-auto mb-32 text-center">
+			<div className="mx-auto w-[60%] text-justify mb-32">
 				<div className="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
 					<div className="">
 						<p className="text-base leading-8 my-5">{post?.desc}</p>
@@ -57,4 +58,4 @@ const BlogDetail = () => {
 	);
 };
 
-export default BlogDetail;
+export default PostDetail;
