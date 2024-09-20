@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from './favicon.svg';
 
 
 const Navbar = () => {
@@ -30,7 +31,7 @@ const Navbar = () => {
 
 			<div className="flex justify-between text-white w-full">
 				<div className="w-full flex items-center gap-3" id="menu" >
-					<img className="h-5 mr-2" src="favicon.svg"/>
+					<img className="h-5 mr-2" src={logo} />
 					<a className="hover:text-indigo-600 transition-colors" href="/">Home</a>
 					<a className="hover:text-indigo-600 transition-colors" href="/create">New Post</a>
 					<a className="hover:text-indigo-600 transition-colors" href="/personal">My Posts</a>

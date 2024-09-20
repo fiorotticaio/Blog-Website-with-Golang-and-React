@@ -27,7 +27,7 @@ const Home = () => {
 	return (
 		<>
 			<div className="relative h-screen w-full flex items-center justify-center text-center bg-center">
-				<div class="absolute top-0 right-0 bottom-0 left-0 -z-10" style={{ backgroundImage: "url(/hero.png)", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+				<div className="absolute top-0 right-0 bottom-0 left-0 -z-10" style={{ backgroundImage: "url(/hero.png)", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
 				
 				<main className="px-4 z-10">
 					<div className="text-center">
@@ -55,7 +55,7 @@ const Home = () => {
 
 			<div className="flex flex-wrap gap-10 p-5 my-10">
 				{posts?.map((post, idx) => (
-					<div className="w-[400px] h-100" key={idx}>
+					<div className="w-[400px] h-100 hover:shadow-2xl hover:scale-[1.01] transition-all duration-300" key={idx}>
 						<article className="overflow-hidden rounded-lg shadow-lg">
 							<div className="h-[300px] overflow-hidden flex justify-center items-center">
 								<a href={`/detail/${post.id}`}>

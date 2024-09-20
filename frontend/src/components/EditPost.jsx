@@ -74,6 +74,8 @@ const CreateBlog = () => {
 	const uploadImage = async () => {
 		let formData = new FormData(); 
 
+		if (imageUpload == null) return image
+
 		formData.append("image", imageUpload);
 		formData.append("name", imageUpload.name);
 
